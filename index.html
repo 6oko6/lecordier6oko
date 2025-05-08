@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6oko - Documents</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      font-family: 'Press Start 2P', cursive;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .glitch-container {
+      width: 300px;
+      transition: opacity 1s ease;
+    }
+
+    .glitch-container img {
+      width: 100%;
+    }
+
+    @keyframes glitch {
+      0%, 100% { transform: translate(0, 0); }
+      20% { transform: translate(-1px, 1px); }
+      40% { transform: translate(1px, -1px); }
+      60% { transform: translate(-1px, -1px); }
+      80% { transform: translate(1px, 1px); }
+    }
+
+    .glitch-container.glitch-active img {
+      animation: glitch 0.3s infinite;
+    }
+
+    #documents {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    h1 {
+      font-size: 16px;
+      border-bottom: 2px solid white;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: rgb(183, 15, 35);
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glitch-container" id="glitchImg">
+    <img src="6oko2.png" alt="6oko Logo" />
+  </div>
+
+  <div id="documents">
+    <h1>Mes documents</h1>
+    <a href="EL_CORRIGE_ORAUX_RMS_2024.pdf" target="_blank">EL CORRIGE ORAUX RMS 2024</a>
+  </div>
+
+  <audio id="glitchSound" src="Click.mp3"></audio>
+
+  <script>
+    const glitchImg = document.getElementById('glitchImg');
+    const glitchSound = document.getElementById('glitchSound');
+    const documents = document.getElementById('documents');
+
+    glitchImg.addEventListener('mouseenter', () => {
+      glitchImg.classList.add('glitch-active');
+    });
+
+    glitchImg.addEventListener('mouseleave', () => {
+      glitchImg.classList.remove('glitch-active');
+    });
+
+    glitchImg.addEventListener('click', () => {
+      glitchSound.currentTime = 0;
+      glitchSound.play();
+      glitchImg.style.opacity = '0';
+      setTimeout(() => {
+        glitchImg.style.display = 'none';
+        documents.style.display = 'flex';
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>
