@@ -74,24 +74,26 @@
 <body>
 
   <div class="glitch-container" id="glitchImg">
-    <img src="6oko2.PNG" alt="logo 6oko">
-
+    <img src="6oko2.png" alt="6oko Logo" />
   </div>
 
   <div id="documents">
     <h1>Mes documents</h1>
-    <a href="EL_CORRIGE_ORAUX_RMS_2024.pdf" target="_blank">EL CORRIGE ORAUX RMS 2024</a>
+    <a href="EL_CORRIGE_ORAUX_RMS_2024.pdf" target="_blank" id="documentLink">EL CORRIGE ORAUX RMS 2024</a>
   </div>
 
-  <audio id="glitchSound" src="Click.mp3"></audio>
+  <audio id="approachSound" src="Approche.mp3"></audio>
 
   <script>
     const glitchImg = document.getElementById('glitchImg');
-    const glitchSound = document.getElementById('glitchSound');
+    const approachSound = document.getElementById('approachSound');
     const documents = document.getElementById('documents');
+    const documentLink = document.getElementById('documentLink');
 
     glitchImg.addEventListener('mouseenter', () => {
       glitchImg.classList.add('glitch-active');
+      approachSound.currentTime = 0;
+      approachSound.play();
     });
 
     glitchImg.addEventListener('mouseleave', () => {
@@ -99,14 +101,21 @@
     });
 
     glitchImg.addEventListener('click', () => {
-      glitchSound.currentTime = 0;
-      glitchSound.play();
       glitchImg.style.opacity = '0';
       setTimeout(() => {
         glitchImg.style.display = 'none';
         documents.style.display = 'flex';
       }, 1000);
     });
+
+    documentLink.addEventListener('mouseenter', () => {
+      approachSound.currentTime = 0;
+      approachSound.play();
+    });
+  </script>
+
+</body>
+</html>
   </script>
 
 </body>
