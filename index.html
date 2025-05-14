@@ -60,6 +60,7 @@
       color: rgb(183, 15, 35);
       text-decoration: none;
       font-size: 12px;
+      margin: 5px 0;
     }
 
     a:hover {
@@ -79,7 +80,12 @@
 
   <div id="documents">
     <h1>Mes documents</h1>
-    <a href="EL_CORRIGE_ORAUX_RMS_2024.pdf" target="_blank" id="documentLink">EL CORRIGE ORAUX RMS 2024</a>
+    <a href="EL_CORRIGE_ORAUX_RMS_2024.pdf" target="_blank" id="documentLink">
+      EL CORRIGE ORAUX RMS 2024
+    </a>
+    <a href="Produit.pdf" target="_blank" id="produitLink">
+      FAIRE LE PRODUIT DE DEUX DECIMAUX LE PLUS RAPIDEMENT POSSIBLE
+    </a>
   </div>
 
   <audio id="approachSound" src="Approche.mp3"></audio>
@@ -89,6 +95,7 @@
     const approachSound = document.getElementById('approachSound');
     const documents = document.getElementById('documents');
     const documentLink = document.getElementById('documentLink');
+    const produitLink = document.getElementById('produitLink');
 
     glitchImg.addEventListener('mouseenter', () => {
       glitchImg.classList.add('glitch-active');
@@ -112,7 +119,13 @@
       approachSound.currentTime = 0;
       approachSound.play();
     });
+
+    produitLink.addEventListener('mouseenter', () => {
+      approachSound.currentTime = 0;
+      approachSound.play();
+    });
   </script>
 
 </body>
 </html>
+
