@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6oko - Documents</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      font-family: 'Press Start 2P', cursive;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .glitch-container {
+      width: 300px;
+      transition: opacity 1s ease;
+    }
+
+    .glitch-container img {
+      width: 100%;
+    }
+
+    @keyframes glitch {
+      0%, 100% { transform: translate(0, 0); }
+      20% { transform: translate(-1px, 1px); }
+      40% { transform: translate(1px, -1px); }
+      60% { transform: translate(-1px, -1px); }
+      80% { transform: translate(1px, 1px); }
+    }
+
+    .glitch-container.glitch-active img {
+      animation: glitch 0.3s infinite;
+    }
+
+    #documents {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    h1 {
+      font-size: 16px;
+      border-bottom: 2px solid white;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-family: 'Press Start 2P', cursive;
+      color: white;
+      text-shadow: none;
+      background: none;
+    }
+
+    a {
+      color: rgb(183, 15, 35);
+      text-decoration: none;
+      font-size: 12px;
+      margin: 5px 0;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    audio {
+      display: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 20px auto;
+      background: #111;
+      color: #fff;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 10px;
+      box-shadow: 0 0 8px #b70f23;
+      min-width: 320px;
+    }
+    th, td {
+      border: 1px solid #b70f23;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: #222;
+      color: #b70f23;
+    }
+    h2 {
+      color: white;
+      font-size: 13px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-family: 'Press Start 2P', cursive;
+      text-shadow: none;
+      background: none;
+      border: none;
+      font-weight: normal;
+    }
+
+    .doc-cat {
+      font-family: 'Press Start 2P', cursive;
+      background: none;
+      border: none;
+      font-size: 13px;
+      padding: 10px 0;
+      margin: 0;
+      cursor: pointer;
+      transition: color 0.2s, text-decoration 0.2s;
+      text-shadow: none;
+      outline: none;
+      display: block;
+      text-decoration: none;
+    }
+    .doc-cat[data-cat="maths"]:hover,
+    .doc-cat[data-cat="maths"]:focus,
+    .doc-cat[data-cat="info"]:hover,
+    .doc-cat[data-cat="info"]:focus,
+    .doc-cat[data-cat="autres"]:hover,
+    .doc-cat[data-cat="autres"]:focus {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .doc-list h2 {
+      color: white;
+      font-size: 13px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-family: 'Press Start 2P', cursive;
+      text-shadow: none;
+      background: none;
+      border: none;
+      font-weight: normal;
+    }
+    .doc-list a {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 12px;
+      text-decoration: none;
+      margin: 10px 0;
+      display: inline-block;
+    }
+    .doc-list a:hover {
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 11px;
+      background: none;
+      border: 2px solid;
+      border-radius: 4px;
+      padding: 6px 18px;
+      margin-bottom: 18px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      outline: none;
+      margin-top: 10px;
+    }
+    #maths-list .back-btn:hover, #maths-list .back-btn:focus {
+      background: #222;
+      color: #fff;
+      border-color: #fff;
+    }
+    #info-list .back-btn:hover, #info-list .back-btn:focus {
+      background: #222;
+      color: #fff;
+      border-color: #fff;
+    }
+    #autres-list .back-btn:hover, #autres-list .back-btn:focus {
+      background: #222;
+      color: #fff;
+      border-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glitch-container" id="glitchImg">
+    <img src="6oko2.PNG" alt="6oko Logo" />
+  </div>
+
+  <div id="documents">
+    <img src="6oko2.PNG" alt="6oko Logo" style="width:120px; margin-bottom: 18px; margin-top: -10px;" />
+    <h1 id="doc-title">Mes documents</h1>
+    <div id="categories" style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+      <span class="doc-cat" data-cat="maths" style="color:#e0e0e0;">Mathématiques</span>
+      <span class="doc-cat" data-cat="info" style="color:#e0e0e0;">Informatique</span>
+      <span class="doc-cat" data-cat="autres" style="color:#e0e0e0;">Autres</span>
+    </div>
+
+    <div id="maths-list" class="doc-list" style="display:none;">
+      <button class="back-btn" type="button" style="border-color:#b70f23; color:#b70f23;">← Retour</button>
+      <h2>Mathématiques</h2>
+      <ul style="list-style:none; padding:0;">
+        <li><a href="EL_CORRIGE_ORAUX_RMS_2024.pdf" target="_blank" style="color:#b70f23;">EL CORRIGE ORAUX RMS 2024</a></li>
+        <li><a href="Produit.pdf" target="_blank" style="color:#b70f23;">FAIRE LE PRODUIT DE DEUX DECIMAUX LE PLUS RAPIDEMENT POSSIBLE</a></li>
+        <li><a href="combinatoire_somme.pdf" target="_blank" style="color:#b70f23;">UNE PREUVE COMBINATOIRE DE LA SOMME DES PREMIERS ENTIERS CONSECUTIFS</a></li>
+        <li><a href="Corrigé_Mines_Pont_Maths_II_PC.pdf" target="_blank" style="color:#b70f23;">CORRIGE MINES PONT MATHS II PC 2025</a></li>
+      </ul>
+    </div>
+
+    <div id="info-list" class="doc-list" style="display:none;">
+      <button class="back-btn" type="button" style="border-color:#2366a8; color:#2366a8;">← Retour</button>
+      <h2>Informatique</h2>
+      <ul style="list-style:none; padding:0;">
+        <li><a href="Demineur.py" target="_blank" style="color:#2366a8;">demineur.py</a></li>
+      </ul>
+    </div>
+
+    <div id="autres-list" class="doc-list" style="display:none;">
+      <button class="back-btn" type="button" style="border-color:#bfa900; color:#bfa900;">← Retour</button>
+      <h2>Autres</h2>
+      <ul style="list-style:none; padding:0;">
+        <li>
+          <a href="TIPE 1 - Files d'Attentes.pdf" target="_blank" style="color:#bfa900;">TIPE 1 - Files d'Attentes</a>
+          <div style="color:#bfa900; font-family:'Press Start 2P',cursive; font-size:11px; margin-top:2px;">
+            (14.6/20)
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <audio id="approachSound" src="Approche.mp3"></audio>
+
+  <script>
+    const glitchImg = document.getElementById('glitchImg');
+    const approachSound = document.getElementById('approachSound');
+    const documents = document.getElementById('documents');
+    const docTitle = document.getElementById('doc-title');
+
+    glitchImg.addEventListener('mouseenter', () => {
+      glitchImg.classList.add('glitch-active');
+      approachSound.currentTime = 0;
+      approachSound.play();
+    });
+
+    glitchImg.addEventListener('mouseleave', () => {
+      glitchImg.classList.remove('glitch-active');
+    });
+
+    glitchImg.addEventListener('click', () => {
+      glitchImg.style.opacity = '0';
+      setTimeout(() => {
+        glitchImg.style.display = 'none';
+        documents.style.display = 'flex';
+      }, 1000);
+    });
+
+    // Gestion des catégories
+    const categories = document.querySelectorAll('.doc-cat');
+    const lists = {
+      maths: document.getElementById('maths-list'),
+      info: document.getElementById('info-list'),
+      autres: document.getElementById('autres-list')
+    };
+
+    categories.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Masquer le titre, les catégories et toutes les listes
+        docTitle.style.display = 'none';
+        document.getElementById('categories').style.display = 'none';
+        Object.values(lists).forEach(list => list.style.display = 'none');
+        // Afficher la liste correspondante
+        lists[btn.dataset.cat].style.display = 'block';
+      });
+      btn.addEventListener('mouseenter', () => {
+        approachSound.currentTime = 0;
+        approachSound.play();
+      });
+    });
+
+    const backBtns = document.querySelectorAll('.back-btn');
+    backBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Masquer toutes les listes
+        Object.values(lists).forEach(list => list.style.display = 'none');
+        // Réafficher le titre et les catégories
+        docTitle.style.display = 'block';
+        document.getElementById('categories').style.display = 'flex';
+      });
+      btn.addEventListener('mouseenter', () => {
+        approachSound.currentTime = 0;
+        approachSound.play();
+      });
+    });
+  </script>
+
+</body>
+</html>
